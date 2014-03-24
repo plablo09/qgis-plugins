@@ -75,7 +75,8 @@ class MaxP:
         capa = self.iface.activeLayer()
         if not capa:
             QMessageBox.information( self.iface.mainWindow(),"Error","No hay capa activa, por favor agrega una capa")
-        
+            return
+       
         myfilepath= os.path.dirname( unicode( capa.dataProvider().dataSourceUri() ) )
         archivoDBF = os.path.join(myfilepath,capa.name()+'.dbf')
         archivoSHP = os.path.join(myfilepath,capa.name()+'.shp')
