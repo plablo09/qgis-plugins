@@ -85,13 +85,15 @@ class MaxP:
         
         
         #campos = capa.pendingFields()
-        lista = self.dlg.listWidget             
-        for c in campos:
-            item =   QListWidgetItem(c)
-            item.setFlags(item.flags() | Qt.ItemIsUserCheckable)
-            item.setCheckState(Qt.Unchecked)
-            lista.addItem(item)
         
+        listaCampos = self.dlg.listWidget 
+        if listaCampos.count() == 0:            
+            for c in campos:
+                item =   QListWidgetItem(c)
+                item.setFlags(item.flags() | Qt.ItemIsUserCheckable)
+                item.setCheckState(Qt.Unchecked)
+                listaCampos.addItem(item)
+    
         self.dlg.show()        
         result = self.dlg.exec_()
         # See if OK was pressed
@@ -109,10 +111,12 @@ class MaxP:
             except:
                  QMessageBox.information( self.iface.mainWindow(),"Error","La varible seed debe ser un entero")
                  return
+
+            filename = QFileDialog.getSaveFileName(self.iface.mainWindow(), 'Open File', '*.dbf')
             
             selected=[]
-            for index in xrange( lista.count()):
-                itm = lista.item(index)
+            for index in xrange( listaCampos.count()):
+                itm = listaCampos.item(index)
                 if itm.checkState()==2:
                     selected.append(itm.text())
 
@@ -121,7 +125,7 @@ class MaxP:
             w=pysal.queen_from_shapefile(archivoSHP)
             size = w.n
             r=pysal.Maxp(w,pci,floor=floor,floor_variable=np.ones((size,1)),initial=seed)
-            outputFName = 'regiones_'+capa.name() + '.dbf'
+            outputFName = filename
             dbfW=pysal.open(os.path.join(myfilepath,outputFName),'w','dbf')
             dbfW.header=['id','region']
             dbfW.field_spec=[('N',9,0),('N',9,0)]
@@ -130,6 +134,8 @@ class MaxP:
                     dbfW.write((id,i))
                     
             dbfW.close()
+            listaCampos = None
+            selected = None
             
             
             
