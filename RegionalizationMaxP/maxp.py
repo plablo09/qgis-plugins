@@ -111,8 +111,14 @@ class MaxP:
             except:
                  QMessageBox.information( self.iface.mainWindow(),"Error","La varible seed debe ser un entero")
                  return
-
-            filename = QFileDialog.getSaveFileName(self.iface.mainWindow(), 'Open File', '*.dbf')
+            fDilg = QFileDialog(self.iface.mainWindow(),'Open File', '*.dbf')
+            fDilg.setDirectory(myfilepath)
+            filename = fDilg.getSaveFileName()
+            
+            if self.dlg.queenButton.isChecked():
+                w = pysal.queen_from_shapefile(archivoSHP)
+            else:
+                 w = pysal.rook_from_shapefile(archivoSHP)
             
             selected=[]
             for index in xrange( listaCampos.count()):
