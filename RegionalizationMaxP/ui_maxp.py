@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_maxp.ui'
 #
-# Created: Tue Mar  4 11:18:20 2014
+# Created: Tue Mar 25 09:33:45 2014
 #      by: PyQt4 UI code generator 4.10
 #
 # WARNING! All changes made in this file will be lost!
@@ -36,17 +36,33 @@ class Ui_MaxP(object):
         self.listWidget.setGeometry(QtCore.QRect(10, 10, 271, 221))
         self.listWidget.setObjectName(_fromUtf8("listWidget"))
         self.textFloor = QtGui.QPlainTextEdit(MaxP)
-        self.textFloor.setGeometry(QtCore.QRect(400, 40, 151, 41))
+        self.textFloor.setGeometry(QtCore.QRect(410, 40, 61, 31))
         self.textFloor.setObjectName(_fromUtf8("textFloor"))
         self.textSeed = QtGui.QTextEdit(MaxP)
-        self.textSeed.setGeometry(QtCore.QRect(400, 130, 141, 41))
+        self.textSeed.setGeometry(QtCore.QRect(410, 90, 61, 31))
         self.textSeed.setObjectName(_fromUtf8("textSeed"))
         self.label = QtGui.QLabel(MaxP)
-        self.label.setGeometry(QtCore.QRect(320, 50, 66, 17))
+        self.label.setGeometry(QtCore.QRect(330, 50, 66, 17))
         self.label.setObjectName(_fromUtf8("label"))
         self.label_2 = QtGui.QLabel(MaxP)
-        self.label_2.setGeometry(QtCore.QRect(320, 140, 66, 17))
+        self.label_2.setGeometry(QtCore.QRect(330, 100, 66, 17))
         self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.label_3 = QtGui.QLabel(MaxP)
+        self.label_3.setGeometry(QtCore.QRect(360, 10, 101, 17))
+        self.label_3.setObjectName(_fromUtf8("label_3"))
+        self.queenButton = QtGui.QRadioButton(MaxP)
+        self.queenButton.setGeometry(QtCore.QRect(330, 170, 116, 22))
+        self.queenButton.setObjectName(_fromUtf8("queenButton"))
+        self.buttonGroup = QtGui.QButtonGroup(MaxP)
+        self.buttonGroup.setObjectName(_fromUtf8("buttonGroup"))
+        self.buttonGroup.addButton(self.queenButton)
+        self.rookButton = QtGui.QRadioButton(MaxP)
+        self.rookButton.setGeometry(QtCore.QRect(330, 200, 116, 22))
+        self.rookButton.setObjectName(_fromUtf8("rookButton"))
+        self.buttonGroup.addButton(self.rookButton)
+        self.label_4 = QtGui.QLabel(MaxP)
+        self.label_4.setGeometry(QtCore.QRect(360, 140, 111, 17))
+        self.label_4.setObjectName(_fromUtf8("label_4"))
 
         self.retranslateUi(MaxP)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), MaxP.accept)
@@ -57,4 +73,8 @@ class Ui_MaxP(object):
         MaxP.setWindowTitle(_translate("MaxP", "MaxP", None))
         self.label.setText(_translate("MaxP", "Floor", None))
         self.label_2.setText(_translate("MaxP", "Seed", None))
+        self.label_3.setText(_translate("MaxP", "Parámetros ", None))
+        self.queenButton.setText(_translate("MaxP", "Queen", None))
+        self.rookButton.setText(_translate("MaxP", "Rook", None))
+        self.label_4.setText(_translate("MaxP", "Tipo de vecindad", None))
 
